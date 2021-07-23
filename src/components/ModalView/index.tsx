@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
-import { View, Text, ModalProps, Modal } from "react-native";
+import { View, ModalProps, Modal } from "react-native";
+
 import Background from "../Background";
 
 import { styles } from "./styles";

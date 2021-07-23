@@ -1,9 +1,9 @@
-import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { Image } from "react-native";
-import { theme } from "../../global/styles/theme";
+import { LinearGradient } from "expo-linear-gradient";
 
 import { styles } from "./styles";
+import { theme } from "../../global/styles/theme";
 
 interface ImageProps {
   urlImage: string;

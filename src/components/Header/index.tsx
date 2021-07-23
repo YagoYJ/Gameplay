@@ -1,12 +1,12 @@
-import { useNavigation } from "@react-navigation/native";
-import { LinearGradient } from "expo-linear-gradient";
-import { Feather } from "expo-vector-icons";
 import React, { ReactNode } from "react";
 import { View, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { BorderlessButton } from "react-native-gesture-handler";
-import { theme } from "../../global/styles/theme";
+import { LinearGradient } from "expo-linear-gradient";
+import { Feather } from "expo-vector-icons";
 
 import { styles } from "./styles";
+import { theme } from "../../global/styles/theme";
 
 interface Props {
   title: string;

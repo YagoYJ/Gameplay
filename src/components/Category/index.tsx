@@ -1,11 +1,11 @@
-import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { Text } from "react-native";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 import { SvgProps } from "react-native-svg";
-import { theme } from "../../global/styles/theme";
+import { LinearGradient } from "expo-linear-gradient";
+
 import { styles } from "./styles";
+import { theme } from "../../global/styles/theme";
 
 interface CategoryProps extends RectButtonProps {
   title: string;
