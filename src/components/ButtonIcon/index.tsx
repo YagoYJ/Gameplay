@@ -3,8 +3,9 @@ import { View, Text, Image } from "react-native";
 import { RectButtonProps } from "react-native-gesture-handler";
 import { RectButton } from "react-native-gesture-handler";
 
-import DiscordImg from "../../assets/discord.png";
 import { styles } from "./styles";
+
+import DiscordImg from "../../assets/discord.png";
 
 interface ButtonProps extends RectButtonProps {
   title: string;

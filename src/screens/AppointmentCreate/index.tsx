@@ -1,8 +1,8 @@
-import { Feather } from "expo-vector-icons";
 import React, { useState } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
-import { View, Text } from "react-native";
+import { KeyboardAvoidingView, Platform, View, Text } from "react-native";
 import { RectButton, ScrollView } from "react-native-gesture-handler";
+import { Feather } from "expo-vector-icons";
+
 import Background from "../../components/Background";
 import Button from "../../components/Button";
 import CategorySelect from "../../components/CategorySelect";
@@ -12,9 +12,10 @@ import Header from "../../components/Header";
 import ModalView from "../../components/ModalView";
 import SmallInput from "../../components/SmallInput";
 import TextArea from "../../components/TextArea";
-import { theme } from "../../global/styles/theme";
+
 import Guilds from "../Guilds";
 
+import { theme } from "../../global/styles/theme";
 import { styles } from "./styles";
 
 export default function AppointmentDetails() {

@@ -1,14 +1,14 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { FlatList } from "react-native-gesture-handler";
+
 import Appointment from "../../components/Appointment";
 import Background from "../../components/Background";
 import ButtonAdd from "../../components/ButtonAdd";
 import CategorySelect from "../../components/CategorySelect";
 import ListDivider from "../../components/ListDivider";
 import ListHeader from "../../components/ListHeader";
-
 import Profile from "../../components/Profile";
 
 import { styles } from "./styles";
@@ -31,14 +31,14 @@ export default function Home() {
         "É hoje que vamos chegar ao challenger sem perder uma partida da md10",
     },
     {
-      id: "1",
+      id: "2",
       guild: {
-        id: "1",
+        id: "2",
         name: "Lendários",
         icon: null,
         owner: true,
       },
-      category: "1",
+      category: "2",
       date: "22/06 às 20:40h",
       description:
         "É hoje que vamos chegar ao challenger sem perder uma partida da md10",

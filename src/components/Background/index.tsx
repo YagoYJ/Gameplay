@@ -1,8 +1,7 @@
-import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
+import { LinearGradient } from "expo-linear-gradient";
 
 import { styles } from "./styles";
-
 import { theme } from "../../global/styles/theme";
 
 interface BackgroundProps {

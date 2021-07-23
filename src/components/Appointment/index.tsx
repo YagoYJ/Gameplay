@@ -1,16 +1,16 @@
 import React from "react";
-import { Text } from "react-native";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
-import { categories } from "../../utils/categories";
-import GuildIcon from "../GuildIcon";
 
-import PlayerSvg from "../../assets/player.svg";
-import CalendarSvg from "../../assets/calendar.svg";
+import GuildIcon from "../GuildIcon";
 
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
 
+import PlayerSvg from "../../assets/player.svg";
+import CalendarSvg from "../../assets/calendar.svg";
+
+import { categories } from "../../utils/categories";
 interface GuildProps {
   id: string;
   name: string;
