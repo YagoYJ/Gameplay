@@ -29,17 +29,21 @@ export default function AppointmentDetails() {
     setModalVisible(true);
   }
 
+  function handleCloseModal() {
+    setModalVisible(false);
+  }
+
   function handleGuildSelect(guildSelect: GuildProps) {
     setSelectedGuild(guildSelect);
     setModalVisible(false);
   }
 
   return (
-    <Background>
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <Background>
         <ScrollView>
           <Header title="Agendar partida" />
 
@@ -84,7 +88,9 @@ export default function AppointmentDetails() {
 
             <View style={styles.field}>
               <View>
-                <Text style={styles.label}>Dia e Mês</Text>
+                <Text style={[styles.label, { marginBottom: 12 }]}>
+                  Dia e Mês
+                </Text>
                 <View style={styles.column}>
                   <SmallInput maxLength={2} />
                   <Text style={styles.divider}>/</Text>
@@ -93,7 +99,9 @@ export default function AppointmentDetails() {
               </View>
 
               <View>
-                <Text style={styles.label}>Hora e minuto</Text>
+                <Text style={[styles.label, { marginBottom: 12 }]}>
+                  Hora e minuto
+                </Text>
                 <View style={styles.column}>
                   <SmallInput maxLength={2} />
                   <Text style={styles.divider}>:</Text>
@@ -121,10 +129,10 @@ export default function AppointmentDetails() {
           </View>
         </ScrollView>
 
-        <ModalView visible={modalVisible}>
+        <ModalView visible={modalVisible} closeModal={handleCloseModal}>
           <Guilds handleGuildSelect={handleGuildSelect} />
         </ModalView>
-      </KeyboardAvoidingView>
-    </Background>
+      </Background>
+    </KeyboardAvoidingView>
   );
 }

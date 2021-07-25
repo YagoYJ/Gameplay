@@ -33,12 +33,12 @@ export default function Home() {
     {
       id: "2",
       guild: {
-        id: "2",
+        id: "1",
         name: "Lendários",
         icon: null,
         owner: true,
       },
-      category: "2",
+      category: "1",
       date: "22/06 às 20:40h",
       description:
         "É hoje que vamos chegar ao challenger sem perder uma partida da md10",
@@ -72,19 +72,19 @@ export default function Home() {
           />
         </View>
 
-        <View style={styles.content}>
-          <ListHeader title="Paritdas agendadas" subTitle="Total 6" />
-          <FlatList
-            data={appointments}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <Appointment data={item} onPress={handleAppointmentDetails} />
-            )}
-            style={styles.mathes}
-            showsVerticalScrollIndicator={false}
-            ItemSeparatorComponent={() => <ListDivider />}
-          />
-        </View>
+        <ListHeader title="Paritdas agendadas" subTitle="Total 6" />
+
+        <FlatList
+          data={appointments}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Appointment data={item} onPress={handleAppointmentDetails} />
+          )}
+          style={styles.matches}
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <ListDivider />}
+          contentContainerStyle={{ paddingBottom: 69 }}
+        />
       </View>
     </Background>
   );
