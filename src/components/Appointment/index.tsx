@@ -13,7 +13,7 @@ import CalendarSvg from "../../assets/calendar.svg";
 import { categories } from "../../utils/categories";
 import { GuildProps } from "../Guild";
 import { LinearGradient } from "expo-linear-gradient";
-interface AppointmentDataProps {
+export interface AppointmentDataProps {
   id: string;
   guild: GuildProps;
   category: string;
@@ -21,7 +21,7 @@ interface AppointmentDataProps {
   description: string;
 }
 
-interface AppointmentProps extends RectButtonProps {
+ export interface AppointmentProps extends RectButtonProps {
   data: AppointmentDataProps;
 }
 
@@ -38,7 +38,7 @@ export default function Appointment({ data, ...rest }: AppointmentProps) {
           style={styles.guildIconContainer}
           colors={[theme.colors.secondary40, theme.colors.secondary70]}
         >
-          <GuildIcon />
+          <GuildIcon iconId={data.guild.icon} guildId={data.guild.id} />
         </LinearGradient>
 
         <View style={styles.content}>
