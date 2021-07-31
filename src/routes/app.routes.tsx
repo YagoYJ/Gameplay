@@ -8,7 +8,7 @@ import AppointmentCreate from "../screens/AppointmentCreate";
 import { theme } from "../global/styles/theme";
 
 const { Navigator, Screen } = createStackNavigator();
-export default function AuthRoutes() {
+export default function AppRoutes() {
   return (
     <Navigator
       initialRouteName="SignIn"

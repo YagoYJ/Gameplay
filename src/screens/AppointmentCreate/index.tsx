@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { KeyboardAvoidingView, Platform, View, Text } from "react-native";
 import { RectButton, ScrollView } from "react-native-gesture-handler";
 import { Feather } from "expo-vector-icons";
+import uuid from "react-native-uuid";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Background from "../../components/Background";
 import Button from "../../components/Button";
@@ -12,11 +14,13 @@ import Header from "../../components/Header";
 import ModalView from "../../components/ModalView";
 import SmallInput from "../../components/SmallInput";
 import TextArea from "../../components/TextArea";
-
 import Guilds from "../Guilds";
+
+import { COLLECTION_APPOINTMENTS } from "../../configs/database";
 
 import { theme } from "../../global/styles/theme";
 import { styles } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AppointmentDetails() {
   const [category, setCategory] = useState("");
@@ -24,6 +28,13 @@ export default function AppointmentDetails() {
   const [selectedGuild, setSelectedGuild] = useState<GuildProps>(
     {} as GuildProps
   );
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [hour, setHour] = useState("");
+  const [minute, setMinute] = useState("");
+  const [description, setDescription] = useState("");
+
+  const navigation = useNavigation();
 
   function handleOpenModal() {
     setModalVisible(true);
@@ -36,6 +47,26 @@ export default function AppointmentDetails() {
   function handleGuildSelect(guildSelect: GuildProps) {
     setSelectedGuild(guildSelect);
     setModalVisible(false);
+  }
+
+  async function handleSave() {
+    const newAppointment = {
+      id: uuid.v4(),
+      guild: selectedGuild,
+      category,
+      date: `${day}/${month} às ${hour}:${minute}h`,
+      description,
+    };
+
+    const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+    const appointments = storage ? JSON.parse(storage) : [];
+
+    AsyncStorage.setItem(
+      COLLECTION_APPOINTMENTS,
+      JSON.stringify([...appointments, newAppointment])
+    );
+
+    return navigation.navigate("Home");
   }
 
   return (
@@ -65,7 +96,10 @@ export default function AppointmentDetails() {
             <RectButton onPress={handleOpenModal}>
               <View style={styles.select}>
                 {selectedGuild.icon ? (
-                  <GuildIcon />
+                  <GuildIcon
+                    guildId={selectedGuild.id}
+                    iconId={selectedGuild.icon}
+                  />
                 ) : (
                   <View style={styles.image} />
                 )}
@@ -92,9 +126,13 @@ export default function AppointmentDetails() {
                   Dia e Mês
                 </Text>
                 <View style={styles.column}>
-                  <SmallInput maxLength={2} />
+                  <SmallInput maxLength={2} value={day} onChangeText={setDay} />
                   <Text style={styles.divider}>/</Text>
-                  <SmallInput maxLength={2} />
+                  <SmallInput
+                    maxLength={2}
+                    value={month}
+                    onChangeText={setMonth}
+                  />
                 </View>
               </View>
 
@@ -103,9 +141,17 @@ export default function AppointmentDetails() {
                   Hora e minuto
                 </Text>
                 <View style={styles.column}>
-                  <SmallInput maxLength={2} />
+                  <SmallInput
+                    maxLength={2}
+                    value={hour}
+                    onChangeText={setHour}
+                  />
                   <Text style={styles.divider}>:</Text>
-                  <SmallInput maxLength={2} />
+                  <SmallInput
+                    maxLength={2}
+                    value={minute}
+                    onChangeText={setMinute}
+                  />
                 </View>
               </View>
             </View>
@@ -121,10 +167,13 @@ export default function AppointmentDetails() {
               maxLength={100}
               numberOfLines={5}
               autoCorrect={false}
+              returnKeyType="send"
+              value={description}
+              onChangeText={setDescription}
             />
 
             <View style={styles.footer}>
-              <Button title="Agendar" />
+              <Button title="Agendar" onPress={handleSave} />
             </View>
           </View>
         </ScrollView>
